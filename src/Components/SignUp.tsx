@@ -15,14 +15,13 @@ const SignUp = ({onSignup}: SignupProps)  => {
 
   const handleSignup = (event: React.FormEvent)=>{
     event.preventDefault();
-  }
-
-  if(userName && email && password){
-    onSignup();
-    setShowHome(true);
-  }
-  else{
-    alert('Please enter details!')
+    if(userName && email && password){
+      onSignup();
+      setShowHome(true);
+    }
+    else{
+      alert('Please enter details!')
+    }
   }
 
   if(showHome){
@@ -32,7 +31,7 @@ const SignUp = ({onSignup}: SignupProps)  => {
   return (
     <div className='w-full max-w-md bg-slate-800/95 backdrop-blur-sm shadow-xl p-6 rounded-lg'>
     <div className="text-white text-2xl font-bold mb-6">Create an Account</div>
-   <form  className="flex flex-col gap-4">
+   <form onSubmit={handleSignup} className="flex flex-col gap-4">
 
       <div className="relative">
       <input 
@@ -67,7 +66,7 @@ const SignUp = ({onSignup}: SignupProps)  => {
         <div className="absolute inset-0 rounded-lg pointer-events-none bg-slate-700/50"></div>
       </div>
 
-      <button className="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      <button type="submit" className="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
         Sign In
       </button>
